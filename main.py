@@ -41,13 +41,43 @@ class Serie(Program):
         return f'{self._name} - {self.year} - {self.temporada} Temporadas - {self.like} Likes'
 
 
+class Playlist:
+
+    def __init__(self, nome, programas):
+        self.nome = nome
+        self._programas = programas
+
+    @property
+    def list(self):
+        return self._programas
+
+    @property
+    def length(self):
+        return len(self._programas)
+
+
 filme_1 = Filme('vingadores - Infinity war', 2018, 160)
-filme_1.give_likes()
-
 serie_1 = Serie('Dark', 2018, 4)
+filme_2 = Filme('Avatar 2', 2022, 230)
+serie_2 = Serie('OuterBanks', 2023, 4)
+
+
+filme_1.give_likes()
+filme_1.give_likes()
+filme_1.give_likes()
+filme_2.give_likes()
+filme_2.give_likes()
 serie_1.give_likes()
+serie_1.give_likes()
+serie_2.give_likes()
+serie_2.give_likes()
+serie_2.give_likes()
 
-filmes_e_series = [filme_1, serie_1]
+filmes_e_series = [filme_1, serie_1, serie_2, filme_2]
 
-for Program in filmes_e_series:
+Plfds = Playlist('Fim de Semana', filmes_e_series)
+
+print(f'Tamanho da Playlist: {len(Plfds.list)}')
+
+for Program in Plfds.list:
     print(Program)
