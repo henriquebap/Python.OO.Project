@@ -19,26 +19,35 @@ class Program:
     def name(self, new_name):
         self._name = new_name.title()
 
+    def __str__(self):
+        return f'{self._name} - {self.year} - {self.like} Likes'
+
 
 class Filme(Program):
     def __init__(self, nome, ano, duracao):
         super().__init__(nome, ano)
-        self.time = duracao
+        self.duracao = duracao
+
+    def __str__(self):
+        return f'{self._name} - {self.year} - {self.duracao} Minutos - {self.like} Likes'
 
 
 class Serie(Program):
     def __init__(self, nome, ano, temporadas):
         super().__init__(nome, ano)
-        self.time = temporadas
+        self.temporada = temporadas
+
+    def __str__(self):
+        return f'{self._name} - {self.year} - {self.temporada} Temporadas - {self.like} Likes'
 
 
-vingadores = Filme('vingadores - Infinity war', 2018, 160)
-vingadores.give_likes()
+filme_1 = Filme('vingadores - Infinity war', 2018, 160)
+filme_1.give_likes()
 
-print(
-    f'{vingadores.name} - {vingadores.year} - {vingadores.time} - {vingadores.like}')
+serie_1 = Serie('Dark', 2018, 4)
+serie_1.give_likes()
 
-dark = Serie('Dark', 2018, 4)
-dark.give_likes()
-print(
-    f'{dark.name} - {dark.year} - {dark.time} - {dark.like}')
+filmes_e_series = [filme_1, serie_1]
+
+for Program in filmes_e_series:
+    print(Program)
